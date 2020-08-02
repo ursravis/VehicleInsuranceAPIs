@@ -3,20 +3,20 @@ services:
   metadataapi:
     build:
       context: .
-      dockerfile: dockerfile_metadata
+      dockerfile: MetadataService-src/MetadataService.API/Dockerfile
     image: metadataapi:latest
     environment:
-      - ConnectionStrings:InsuranceConnection= ${InsuranceConnection}
-      - Cache:AWSRedisEndPoint= ${AWSRedisEndPoint}
+      - ConnectionStrings:InsuranceConnection= fhgfh
+      - Cache:AWSRedisEndPoint= hgjjh
     ports:
       - "8080:80"
   policyapi:
     build:
       context: .
-      dockerfile: dockerfile_policy
+      dockerfile: PolicyService-src/PolicyService.API/Dockerfile
     image: policyapi:latest
     environment:
-      - Cache:AWSRedisEndPoint= ${AWSRedisEndPoint}
+      - Cache:AWSRedisEndPoint= test
     ports:
       - "8081:80"
   

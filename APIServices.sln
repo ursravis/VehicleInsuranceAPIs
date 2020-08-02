@@ -3,23 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyService.API", "PolicyService-src\PolicyService.API\PolicyService.API.csproj", "{5787BF00-D59E-42EA-A9D9-063CC493701D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyService.API", "PolicyService-src\PolicyService.API\PolicyService.API.csproj", "{5787BF00-D59E-42EA-A9D9-063CC493701D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PolicyService-src", "PolicyService-src", "{0A2CF774-5CFF-4158-9F22-5BBF9F9104DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyService.Core", "PolicyService-src\PolicyService.Core\PolicyService.Core.csproj", "{E91E4A90-2491-481C-9137-443B1F727B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyService.Core", "PolicyService-src\PolicyService.Core\PolicyService.Core.csproj", "{E91E4A90-2491-481C-9137-443B1F727B19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MetadataService-src", "MetadataService-src", "{C5B57D31-18B1-455F-8A40-203544B6E346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataService.API", "MetadataService-src\MetadataService.API\MetadataService.API.csproj", "{9842C972-E3CF-4C21-893B-4C7D473F3AAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataService.API", "MetadataService-src\MetadataService.API\MetadataService.API.csproj", "{9842C972-E3CF-4C21-893B-4C7D473F3AAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataService.DTO", "MetadataService-src\MetadataService.DTO\MetadataService.DTO.csproj", "{EDD065EA-69F7-46DD-A41E-C78B2F15ADA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataService.DTO", "MetadataService-src\MetadataService.DTO\MetadataService.DTO.csproj", "{EDD065EA-69F7-46DD-A41E-C78B2F15ADA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataService.Core", "MetadataService-src\MetadataService.Core\MetadataService.Core.csproj", "{2DABF910-0F69-4160-A540-86B3B692A558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataService.Core", "MetadataService-src\MetadataService.Core\MetadataService.Core.csproj", "{2DABF910-0F69-4160-A540-86B3B692A558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataService.Infrastructure", "MetadataService-src\MetadataService.Infrastructure\MetadataService.Infrastructure.csproj", "{A66AB750-1399-41DD-B577-198990F2C8DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataService.Infrastructure", "MetadataService-src\MetadataService.Infrastructure\MetadataService.Infrastructure.csproj", "{A66AB750-1399-41DD-B577-198990F2C8DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetadataService.SharedKernel", "MetadataService-src\MetadataService.SharedKernel\MetadataService.SharedKernel.csproj", "{B08FEDF7-E073-4DF7-B0DA-F1605E86B0A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetadataService.SharedKernel", "MetadataService-src\MetadataService.SharedKernel\MetadataService.SharedKernel.csproj", "{B08FEDF7-E073-4DF7-B0DA-F1605E86B0A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7DF2467-12C3-46B1-82F4-887F49B47AA3}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

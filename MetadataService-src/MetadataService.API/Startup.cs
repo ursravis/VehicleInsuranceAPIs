@@ -47,17 +47,18 @@ namespace MetadataService.API
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
-            if (_currentEnvironment.IsDevelopment())
-            {
-                services.AddDistributedMemoryCache();
-            }
-            else
-            {
-                services.AddDistributedRedisCache(options =>
-                {
-                    options.Configuration = Configuration["Cache:AWSRedisEndPoint"];
-                });
-            }
+            services.AddDistributedMemoryCache();
+            //if (_currentEnvironment.IsDevelopment())
+            //{
+            //    services.AddDistributedMemoryCache();
+            //}
+            //else
+            //{
+            //    services.AddDistributedRedisCache(options =>
+            //    {
+            //        options.Configuration = Configuration["Cache:AWSRedisEndPoint"];
+            //    });
+            //}
             services.AddHealthChecks();          
             services.AddControllers();
             var environmentName = Configuration.GetValue<string>("EnvironmentName");
@@ -68,7 +69,7 @@ namespace MetadataService.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             // Create a logging provider based on the configuration information passed through the appsettings.json
-            loggerFactory.AddAWSProvider(this.Configuration.GetAWSLoggingConfigSection());
+            //loggerFactory.AddAWSProvider(this.Configuration.GetAWSLoggingConfigSection());
             app.UseHealthChecks("/health");
             app.UseSwagger(c =>
             {
@@ -88,7 +89,7 @@ namespace MetadataService.API
 
             app.UseAuthorization();
             app.UseCors("AllowAnyOriginPolicy");
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseErrorHandlingMiddleware();
             app.UseEndpoints(endpoints =>
             {

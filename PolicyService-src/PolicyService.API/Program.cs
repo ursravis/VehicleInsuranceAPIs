@@ -42,16 +42,16 @@ namespace PolicyService.API
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureAppConfiguration((hostContext, config) =>
-                {
-                    var env = hostContext.HostingEnvironment;
-                    // delete all default configuration providers
-                    config.Sources.Clear();
-                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-                    //This option is useful, when you want override from system environment variables. 
-                    config.AddEnvironmentVariables();
-                })
+                // .ConfigureAppConfiguration((hostContext, config) =>
+                // {
+                //     var env = hostContext.HostingEnvironment;
+                //     // delete all default configuration providers
+                //     config.Sources.Clear();
+                //     config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                //             .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                //     //This option is useful, when you want override from system environment variables. 
+                //     config.AddEnvironmentVariables();
+                // })
                     .ConfigureLogging(logging =>
                     {
                         logging.ClearProviders();

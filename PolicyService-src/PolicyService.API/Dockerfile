@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["PolicyService-src/PolicyService.API/PolicyService.API.csproj", "PolicyService-src/PolicyService.API/"]
+COPY ["PolicyService-src/PolicyService.Core/PolicyService.Core.csproj", "PolicyService-src/PolicyService.Core/"]
 RUN dotnet restore "PolicyService-src/PolicyService.API/PolicyService.API.csproj"
 COPY . .
 WORKDIR "/src/PolicyService-src/PolicyService.API"
