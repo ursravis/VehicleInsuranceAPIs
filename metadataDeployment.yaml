@@ -1,0 +1,45 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: metadata-webapi
+spec:
+  selector:
+   matchLabels:
+      name: metadata-webapi
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  
+  template:
+    metadata:
+      labels:
+        name: metadata-webapi
+    spec:
+      containers:
+      - name: metadata-webapi
+        resources:
+          requests:
+            cpu: "0.2"
+            memory: "128Mi"
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+        image:  raviaakula/metadataapi:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: http
+        # readinessProbe:
+        #   httpGet:
+        #      path: /meatadataapi/health
+        #      port: 80
+        # envFrom:
+        #   - configMapRef:
+        #      name: metadata-webapi-configmap
+        #   - secretRef:
+        #      name: metadata-webapi-secrets 
+

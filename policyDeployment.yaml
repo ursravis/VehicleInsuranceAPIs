@@ -1,0 +1,45 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+policy:
+  name: policy-webapi
+spec:
+  selector:
+   matchLabels:
+      name: policy-webapi
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  
+  template:
+    metadata:
+      labels:
+        name: policy-webapi
+    spec:
+      containers:
+      - name: policy-webapi
+        resources:
+          requests:
+            cpu: "0.2"
+            memory: "128Mi"
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+        image:  raviaakula/policyapi:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: http
+        # readinessProbe:
+        #   httpGet:
+        #      path: /policyapi/health
+        #      port: 80
+        # envFrom:
+        #   - configMapRef:
+        #      name: policy-webapi-configmap
+        #   - secretRef:
+        #      name: policy-webapi-secrets 
+

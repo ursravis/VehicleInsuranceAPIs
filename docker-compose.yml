@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: MetadataService-src/MetadataService.API/Dockerfile
-    image: metadataapi:latest
+    image: metadataapi:1.0.0
     environment:
       - ConnectionStrings:InsuranceConnection= fhgfh
       - Cache:AWSRedisEndPoint= hgjjh
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: PolicyService-src/PolicyService.API/Dockerfile
-    image: policyapi:latest
+    image: policyapi:1.0.0
     environment:
       - Cache:AWSRedisEndPoint= test
     ports:
