@@ -4,20 +4,16 @@ metadata:
   name: micro-service-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-      serviceName: metadata-webapi-service
-      servicePort: 80
   rules:
-  - host: myminikube.info
+  - host: vehicleinsurance.com
     http:
       paths:
       - backend:
           serviceName: metadata-webapi-service
-          servicePort: 80
+          servicePort: 8081
         path: /metadataapi/
-      # - backend:
-      #     serviceName: micro-service-webui
-      #     servicePort: 8080
-      #   path: /
+      - backend:
+          serviceName: policy-webapi-service
+          servicePort: 8080
+        path: /policyapi/
