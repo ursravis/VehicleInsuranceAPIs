@@ -27,14 +27,14 @@ spec:
             limits:
               cpu: "0.5"
               memory: "512Mi"
-        image:  raviaakula/metadataapi:1.0.0
+        image:  nginx:latest
         imagePullPolicy: IfNotPresent    
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-             path: /health
-             port: 80
+        # readinessProbe:
+        #   httpGet:
+        #      path: /health
+        #      port: 80
         # envFrom:
         #   - configMapRef:
         #      name: metadata-webapi-configmap

@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "2048-ingress"
+  namespace: "2048-game"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-0cd2fd18272d36cc0, subnet-0a2986cbcf31bd1dd, subnet-052d3ba7a79675672, subnet-03468da2ea9a26901, subnet-0d96b4a4614c07c96, subnet-0f3bbc926fcd95ac2
+    alb.ingress.kubernetes.io/security-groups: sg-0d27ef32941049d70, sg-0cfe1d0f7468f774e, sg-0927938301d22c760
+  labels:
+    app: 2048-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: "service-2048"
+              servicePort: 80
