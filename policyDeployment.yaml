@@ -35,6 +35,12 @@ spec:
           httpGet:
              path: /health
              port: 80
+        # env:
+        # - name: env_password
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: policyapi-secret
+        #       key: password
         # envFrom:
         #   - configMapRef:
         #      name: policy-webapi-configmap

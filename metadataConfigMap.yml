@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metadata-webapi-configmap
+data:
+  env_name: testing20
+  Cache__AWSRedisEndPoint: aws.com/redis/43

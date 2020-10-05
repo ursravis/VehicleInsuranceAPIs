@@ -27,16 +27,20 @@ spec:
             limits:
               cpu: "0.5"
               memory: "512Mi"
-        image:  nginx:latest
+        image:  raviaakula/metadataapi:1.0.0
         imagePullPolicy: IfNotPresent    
         ports:
         - containerPort: 80
-        # readinessProbe:
-        #   httpGet:
-        #      path: /health
-        #      port: 80
-        # envFrom:
-        #   - configMapRef:
-        #      name: metadata-webapi-configmap
-        #   - secretRef:
-        #      name: metadata-webapi-secrets 
+        readinessProbe:
+          httpGet:
+             path: /health
+             port: 80     
+        envFrom:
+          - configMapRef:
+             name: metadata-webapi-configmap
+        env:
+        - name: ConnectionStrings__InsuranceConnection
+          valueFrom:
+            secretKeyRef:
+              name: sqlconnection-secret
+              key: sqlconnectionstring
