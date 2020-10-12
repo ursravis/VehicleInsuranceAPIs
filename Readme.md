@@ -18,7 +18,7 @@
 16.	minikube service policy-webapi-service --url 
 17.	make sure service working fine in browser by navigating to URL/policyapi/swagger
 18.	kubectl apply -f metadataConfigMap.yml
-19.	kubectl create secret generic sqlconnection-secret --from-literal='sqlconnectionstring= Data Source=DDDD;Initial Catalog=MyDB;Username=ravi;Password=wowww’
+19.	kubectl create secret generic sqlconnection-secret --from-literal='sqlconnectionstring= Data Source=DDDD;Initial Catalog=MyDB;Username=ravi;Password=wowww'
 20.	kubectl apply -f metadataDeployment.yaml
 21.	kubectl apply -f metadataService.yaml
 22.	minikube service metadata-webapi-service --url 
@@ -28,4 +28,20 @@
 26.	add entry in host file with IP Host
 27.	Navigate to http://vehicleinsurance.com/metadataapi/swagger/index.html
 28.	Navigate to http://vehicleinsurance.com/policyapi/swagger/index.html
-29.	
+
+# GCP Kubernetes Engine
+1. Download the Cloud SDK installer(https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe)
+2. gcloud init--> To Authorizes and selects project
+    (gcloud config set project project-id
+    gcloud config set compute/zone compute-zone)
+3. gcloud container clusters create newcluster
+4. Your kubectl automatically connects created cluster , Otheriwse open the Console and get the  credentials
+   gcloud container clusters get-credentials newcluster --zone us-west1-a --project velvety-mason-292317
+5.	kubectl apply -f policyDeployment.yaml
+6.	kubectl apply -f policyService.yaml
+7.	kubectl apply -f metadataConfigMap.yml
+8.	kubectl create secret generic sqlconnection-secret --from-literal='sqlconnectionstring= Data Source=DDDD;Initial Catalog=MyDB;Username=ravi;Password=wowww'
+9.	kubectl apply -f metadataDeployment.yaml
+10.	kubectl apply -f metadataService.yaml
+11.	kubectl apply -f MicroServiceIngress.yaml
+12. kubectl get ingress-- Copy the Ip Address adn append with microservice url paths to check.
