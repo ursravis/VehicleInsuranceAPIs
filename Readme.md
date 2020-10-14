@@ -4,7 +4,8 @@
 3.	choco install minikube
 4.	Choco install Virtual box
 (Due to networking limitations of driver docker on windows, ingress addon is not supported. https://github.com/kubernetes/minikube/issues/7332)
-5.	minikube start --driver virtualbox
+5.	minikube start --vm-driver="hyperv" --memory=4096 --cpus=4 --hyperv-virtual-switch="New Virtual Switch" --kubernetes-version v1.16.0
+--v=7 --alsologtostderr (minikube start --driver virtualbox)
 6.	minikube addons enable ingress
 7.	Kubectl get all
 8.	docker build -t metadataapi:1.0.0 -f MetadataService-src/MetadataService.API/Dockerfile . 
@@ -24,17 +25,16 @@
 22.	minikube service metadata-webapi-service --url 
 23.	make sure service working fine in browser by navigating to URL/metadataapi/swagger
 24.	kubectl apply -f MicroServiceIngress.yaml
-25.	kubectl get ingress Notedown Ip and host name
-26.	add entry in host file with IP Host
-27.	Navigate to http://vehicleinsurance.com/metadataapi/swagger/index.html
-28.	Navigate to http://vehicleinsurance.com/policyapi/swagger/index.html
+25.	kubectl get ingress Notedown Ip and host name(If you have one)	
+27.	No Host Navigate to http://{MinikubeIP}/metadataapi/swagger and http://{MinikubeIP}/policyapi/swagger
+28.	For Host path add entry in host file with IP Host and Navigate to http://vehicleinsurance.com/policyapi/swagger
 
 # GCP Kubernetes Engine
 1. Download the Cloud SDK installer(https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe)
 2. gcloud init--> To Authorizes and selects project
     (gcloud config set project project-id
     gcloud config set compute/zone compute-zone)
-3. gcloud container clusters create newcluster
+3. gcloud container clusters create newcluster --cluster-version "1.16.13-gke.401" --zone "us-west1-a"
 4. Your kubectl automatically connects created cluster , Otheriwse open the Console and get the  credentials
    gcloud container clusters get-credentials newcluster --zone us-west1-a --project velvety-mason-292317
 5.	kubectl apply -f policyDeployment.yaml
