@@ -1,23 +1,22 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: micro-service-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-  #   kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+    # kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-  # - host: vehicleinsurance.com
   - http:
-      paths:      
-      - path: /metadataapi/
-        backend:
+      paths:
+      - backend:
+          serviceName: policy-webapi-service
+          servicePort: 8080
+        path: /policyapi/*
+      - backend:
           serviceName: metadata-webapi-service
           servicePort: 8081
-        
-      - path: /policyapi/
-        backend:
-          serviceName: policy-webapi-service
-          servicePort: 8080     
-     
+        path: /metadataapi/*
+
         
